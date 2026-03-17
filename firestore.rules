@@ -1,0 +1,85 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: get the caller's tenantId
+    function callerTenantId() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.tenantId;
+    }
+
+    // Tenants
+    match /tenants/{tenantId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+
+    // Users
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow create, update: if request.auth != null;
+    }
+
+    // Conversations and messages – tenant-scoped
+    match /conversations/{convId} {
+      allow read, write: if request.auth != null
+        && (resource == null || !resource.data.keys().hasAny(['tenantId']) || resource.data.tenantId == callerTenantId());
+
+      match /messages/{msgId} {
+        allow read, write: if request.auth != null;
+      }
+
+      match /notes/{noteId} {
+        allow read, write: if request.auth != null;
+      }
+    }
+
+    // Tags – tenant-scoped
+    match /tags/{tagId} {
+      allow read, write: if request.auth != null
+        && (resource == null || !resource.data.keys().hasAny(['tenantId']) || resource.data.tenantId == callerTenantId());
+    }
+
+    // Kanban cards – tenant-scoped
+    match /kanban_cards/{cardId} {
+      allow read, write: if request.auth != null
+        && (resource == null || !resource.data.keys().hasAny(['tenantId']) || resource.data.tenantId == callerTenantId());
+    }
+
+    // Contacts – tenant-scoped
+    match /contacts/{contactId} {
+      allow read, write: if request.auth != null
+        && (resource == null || !resource.data.keys().hasAny(['tenantId']) || resource.data.tenantId == callerTenantId());
+    }
+
+    // Z-API config
+    match /zapi_config/{docId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Chatbot config
+    match /chatbot_config/{docId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Presence
+    match /presence/{docId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    // Message map
+    match /zapi_message_map/{docId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Migrations flags
+    match /migrations/{docId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Superlogica config
+    match /superlogica_config/{docId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

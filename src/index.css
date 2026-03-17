@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 215 80% 10%;
+    --foreground: 0 0% 92%;
+    --card: 215 60% 14%;
+    --card-foreground: 0 0% 92%;
+    --popover: 215 60% 14%;
+    --popover-foreground: 0 0% 92%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 60% 18%;
+    --secondary-foreground: 0 0% 92%;
+    --muted: 215 60% 18%;
+    --muted-foreground: 215 30% 55%;
+    --accent: 215 60% 18%;
+    --accent-foreground: 0 0% 92%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 50% 22%;
+    --input: 215 50% 22%;
+    --ring: 217 91% 60%;
+    --radius: 0.5rem;
+    --sidebar-background: 215 80% 8%;
+    --sidebar-foreground: 0 0% 85%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 60% 16%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 215 50% 20%;
+    --sidebar-ring: 217 91% 60%;
+
+    /* WhatsApp Theme Tokens */
+    --wa-green: 142 70% 40%;
+    --wa-dark: 200 18% 10%;
+    --wa-header: 200 15% 95%;
+    --wa-sidebar: 200 10% 97%;
+    --wa-chat: 30 20% 93%;
+    --wa-outgoing: 120 30% 90%;
+    --wa-incoming: 0 0% 100%;
+    --wa-text: 200 20% 15%;
+    --wa-muted: 200 10% 55%;
+    --wa-icon: 200 10% 45%;
+    --wa-search: 200 15% 93%;
+    --wa-hover: 200 10% 92%;
+    --wa-active: 142 30% 92%;
+    --wa-border: 200 15% 90%;
+    --wa-system: 0 0% 100%;
+    --wa-check: 200 10% 55%;
+    --wa-read: 199 89% 48%;
+
+    /* Síndico X Brand Tokens */
+    --sindico-primary: 215 80% 15%;
+    --sindico-secondary: 215 70% 22%;
+    --sindico-accent: 217 91% 60%;
+    --sindico-surface: 215 60% 18%;
+    --sindico-text: 0 0% 95%;
+    --sindico-muted: 215 30% 55%;
+  }
+
+  .dark {
+    --background: 215 80% 10%;
+    --foreground: 0 0% 92%;
+    --card: 215 60% 14%;
+    --card-foreground: 0 0% 92%;
+    --popover: 215 60% 14%;
+    --popover-foreground: 0 0% 92%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 60% 18%;
+    --secondary-foreground: 0 0% 92%;
+    --muted: 215 60% 18%;
+    --muted-foreground: 215 30% 55%;
+    --accent: 215 60% 18%;
+    --accent-foreground: 0 0% 92%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 50% 22%;
+    --input: 215 50% 22%;
+    --ring: 217 91% 60%;
+    --sidebar-background: 215 80% 8%;
+    --sidebar-foreground: 0 0% 85%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 60% 16%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 215 50% 20%;
+    --sidebar-ring: 217 91% 60%;
+
+    /* WhatsApp Dark Theme */
+    --wa-green: 142 70% 45%;
+    --wa-dark: 200 18% 7%;
+    --wa-header: 200 15% 14%;
+    --wa-sidebar: 200 18% 10%;
+    --wa-chat: 200 18% 12%;
+    --wa-outgoing: 152 25% 18%;
+    --wa-incoming: 200 15% 18%;
+    --wa-text: 0 0% 92%;
+    --wa-muted: 200 10% 55%;
+    --wa-icon: 200 10% 60%;
+    --wa-search: 200 15% 16%;
+    --wa-hover: 200 15% 16%;
+    --wa-active: 152 20% 16%;
+    --wa-border: 200 15% 16%;
+    --wa-system: 200 15% 20%;
+    --wa-check: 200 10% 55%;
+    --wa-read: 199 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* WhatsApp chat background pattern */
+.bg-whatsapp-chat {
+  background-color: hsl(var(--wa-chat));
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
